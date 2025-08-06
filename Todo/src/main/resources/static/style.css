@@ -1,0 +1,310 @@
+/* =====================
+   Global Styles
+   ===================== */
+* {
+    font-family: 'Urbanist', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100vh;
+    background: linear-gradient(120deg, #121625 0%, #2d2f58 100%);
+    color: #edeff6;
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =====================
+   Main Container
+   ===================== */
+.todo-container {
+    max-width: 600px;
+    width: 90vw;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(18, 22, 37, 0.25);
+    border-radius: 20px;
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    padding: 36px 32px 30px 32px;
+    transition: box-shadow 0.22s ease-in-out;
+    user-select: none;
+}
+
+.todo-container:hover {
+    box-shadow: 0 16px 48px rgba(127, 86, 218, 0.28),
+    0 4px 20px rgba(52, 209, 191, 0.18);
+}
+
+/* =====================
+   Header Section (h4)
+   ===================== */
+.todo-header {
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 1.5px 7px rgba(18, 22, 37, 0.07);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 13px 0;
+    margin-bottom: 22px;
+
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #edeff6;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+/* Prevent inner divs from shrinking and prevent line breaks */
+.todo-header > div {
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.todo-header i {
+    font-size: 1.35rem;
+    color: #34d1bf; /* primary accent color */
+}
+
+.todo-header .todo-text {
+    font-weight: 500;
+    color: #edeff6;
+}
+
+/* Responsive header stack */
+@media (max-width: 480px) {
+    .todo-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+/* =====================
+   Input Group
+   ===================== */
+.form-group {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 24px;
+}
+
+.todo-input {
+    flex: 1;
+    border-radius: 30px 0 0 30px;
+    border: 1.5px solid rgba(185, 174, 220, 0.6);
+    background: rgba(255, 255, 255, 0.14);
+    padding: 11px 22px;
+    font-size: 1.08rem;
+    color: #edeff6;
+    outline-offset: 2px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: border-color 0.18s, background-color 0.2s;
+    user-select: text;
+}
+
+.todo-input::placeholder {
+    color: #b9aedc;
+    font-style: italic;
+}
+
+.todo-input:focus {
+    border-color: #34d1bf;
+    background: rgba(255, 255, 255, 0.25);
+    outline: 2px solid rgba(185, 174, 220, 0.5);
+}
+
+/* =====================
+   Add Button
+   ===================== */
+.btn-add {
+    border-radius: 0 30px 30px 0;
+    background: linear-gradient(90deg, #34d1bf, #7f56da 85%);
+    color: #fff;
+    border: none;
+    padding: 11px 28px;
+    font-weight: bold;
+    font-size: 1.12em;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
+    box-shadow: 0 2px 8px rgba(127, 86, 218, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    user-select: none;
+}
+
+.btn-add:hover,
+.btn-add:focus {
+    background: linear-gradient(85deg, #7f56da, #34d1bf 70%);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 20px #2fe2c480;
+    outline: 2px solid #b9aedc;
+}
+
+/* =====================
+   Todo List
+   ===================== */
+.todo-list {
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-bottom: 6px;
+    list-style: none;
+}
+
+/* Scrollbar for WebKit browsers */
+.todo-list::-webkit-scrollbar {
+    width: 7px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(130deg, #7f56da 30%, #34d1bf 100%);
+    border-radius: 10px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+    background: rgba(185, 174, 220, 0.3);
+    border-radius: 10px;
+}
+
+/* Scrollbar for Firefox */
+.todo-list {
+    scrollbar-width: thin;
+    scrollbar-color: #34d1bf rgba(185, 174, 220, 0.3);
+}
+
+/* =====================
+   Todo Item
+   ===================== */
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 16px;
+    border-radius: 14px;
+    margin-bottom: 3px;
+
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 2px 7px rgba(18, 22, 37, 0.05);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+    transition: background 0.18s ease, box-shadow 0.15s ease;
+    user-select: text;
+}
+
+.todo-item:hover {
+    background: rgba(185, 174, 220, 0.30);
+    box-shadow: 0 4px 14px rgba(127, 86, 218, 0.18);
+}
+
+/* Todo text styling */
+.todo-text {
+    flex-grow: 1;
+    margin-left: 14px;
+    font-size: 1.07em;
+    letter-spacing: 0.02em;
+    color: #edeff6;
+    transition: color 0.2s ease;
+}
+
+/* Completed todo text */
+.completed .todo-text {
+    text-decoration: line-through;
+    opacity: 0.65;
+    color: #2fe2c4;
+    font-style: italic;
+    background: rgba(47, 226, 196, 0.28);
+    border-radius: 7px;
+    padding-left: 5px;
+}
+
+/* =====================
+   Icons (Check & Unchecked)
+   ===================== */
+.check-icon,
+.unchecked-icon {
+    cursor: pointer;
+    font-size: 1.31em;
+    margin-right: 7px;
+    transition: color 0.15s ease, transform 0.10s ease;
+    user-select: none;
+}
+
+.check-icon {
+    color: #34d1bf;
+}
+
+.check-icon:hover,
+.unchecked-icon:hover {
+    color: #7f56da;
+    transform: scale(1.14) rotate(-6deg);
+}
+
+.unchecked-icon {
+    color: #7f56da;
+}
+
+/* =====================
+   Delete Button
+   ===================== */
+.delete-btn {
+    color: rgba(244, 117, 122, 0.8);
+    background: none;
+    border: none;
+    font-size: 1.18em;
+    margin-left: 14px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: color 0.18s ease, opacity 0.13s ease, box-shadow 0.12s ease;
+    user-select: none;
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+    color: #f4757a;
+    opacity: 1;
+    outline: 2px solid rgba(185, 174, 220, 0.7);
+    border-radius: 6px;
+    box-shadow: 0 0 10px #f4757a88;
+}
+
+/* =====================
+   Disabled State
+   ===================== */
+.todo-input:disabled,
+.btn-add:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* =====================
+   Responsive Design
+   ===================== */
+@media (max-width: 700px) {
+    .todo-container {
+        padding: 22px 20px 20px 20px;
+        border-radius: 16px;
+    }
+
+    .todo-input,
+    .btn-add {
+        font-size: 1em;
+        padding: 10px 16px;
+    }
+}
