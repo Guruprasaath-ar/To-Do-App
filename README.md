@@ -38,9 +38,3 @@ This application allows users to manage their daily tasks efficiently by adding,
 5. 5. Access the Web App
   Open your browser and navigate to: http://localhost:8080/
 
-API Endpoints 
-Method	          Endpoint              	    Description
-GET	               /	                        Main UI page
-POST	             /add	                      Add a new task
-GET	               /update/{id}	              Mark task as complete
-GET	               delete/{id}	              Delete a task
